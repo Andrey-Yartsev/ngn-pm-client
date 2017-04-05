@@ -1,0 +1,7 @@
+build
+node_modules
+.idea
+.env
+u/*
+m/js/cache/*
+src/formTmpl/*
