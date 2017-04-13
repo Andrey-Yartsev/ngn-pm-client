@@ -15,7 +15,8 @@ Ngn.Pm.Projects = new Class({
       restBasePath: '',
       basicBasePath: '',
       tools: {
-        edit: 'Редактировать'
+        edit: 'Редактировать',
+        delete: 'Удалить',
       },
       menu: [Ngn.Grid.menu['new']],
       formatters: {
@@ -35,9 +36,8 @@ Ngn.Pm.Projects = new Class({
       }
     }).reload();
     Ngn.Grid.defaultDialogOpts = {
-      width: 200
+      width: 250
     };
-
   }
 
 });
