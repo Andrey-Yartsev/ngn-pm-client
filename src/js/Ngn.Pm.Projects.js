@@ -1,12 +1,9 @@
 Ngn.Pm.ProjectDialog = new Class({
-  Extends: Ngn.Dialog.RequestForm.Json,
+  Extends: Ngn.Dialog.RequestForm,
   options: {
     title: 'Редактирование',
-    // @requiresBefore src/formTmpl/project.js
-    formTmpl: Ngn.formTmpl.project,
     id: 'user',
-    dialogClass: 'dialog fieldFullWidth',
-    width: 200
+    dialogClass: 'dialog fieldFullWidth'
   }
 });
 
@@ -20,11 +17,16 @@ Ngn.Pm.Projects = new Class({
       tools: {
         edit: 'Редактировать'
       },
+      menu: [Ngn.Grid.menu['new']],
+      formatters: {
+        domain: function(domain) {
+          return '<a href="http://'+domain+'" target="_blank">'+domain+'</a>';
+        }
+      },
       toolActions: {
         edit: function (row, opt) {
-          new Ngn.Pm.ProjectDialog({
-            url: Ngn.serverConfig.url() +
-            '/api/v1' + '/user/' + row.id,
+          new Ngn.Pm.ProjectDialog({//
+            url: Ngn.serverConfig.url() + '/json_edit/' + row.id,
             onOkClose: function () {
               this.reload(row.id);
             }.bind(this)
@@ -32,6 +34,10 @@ Ngn.Pm.Projects = new Class({
         }
       }
     }).reload();
+    Ngn.Grid.defaultDialogOpts = {
+      width: 200
+    };
+
   }
 
 });

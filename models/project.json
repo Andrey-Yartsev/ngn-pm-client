@@ -1,6 +1,12 @@
 [
   {
     "name": "domain",
-    "title": "Домен.."
+    "title": "Домен",
+    "required": true
+  },
+  {
+    "name": "name",
+    "title": "Имя",
+    "required": true
   }
 ]
