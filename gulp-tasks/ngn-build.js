@@ -10,8 +10,7 @@ module.exports = gulp.task('ngn-build', function () {
     ngnEnvFolder: process.env.NGN_ENV_FOLDER,
     buildFolder: process.env.PROJECT_FOLDER + '/build/public/m',
     projectFolder: process.env.PROJECT_FOLDER,
-    name: 'main',
-    jsonFieldsFolder: process.env.PROJECT_FOLDER + '/models'
+    name: 'main'
   };
   var reportOptions = {
     err: true,

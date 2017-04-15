@@ -7,6 +7,10 @@ Ngn.Pm.ProjectDialog = new Class({
   }
 });
 
+var defaultDialogOpts = {
+  width: 250
+};
+
 Ngn.Pm.Projects = new Class({
 
   initialize: function () {
@@ -26,18 +30,16 @@ Ngn.Pm.Projects = new Class({
       },
       toolActions: {
         edit: function (row, opt) {
-          new Ngn.Pm.ProjectDialog({//
+          new Ngn.Pm.ProjectDialog(Object.merge({
             url: Ngn.serverConfig.url() + '/json_edit/' + row.id,
             onOkClose: function () {
               this.reload(row.id);
             }.bind(this)
-          });
+          }, defaultDialogOpts));
         }
       }
     }).reload();
-    Ngn.Grid.defaultDialogOpts = {
-      width: 250
-    };
+    Ngn.Grid.defaultDialogOpts = defaultDialogOpts;
   }
 
 });
