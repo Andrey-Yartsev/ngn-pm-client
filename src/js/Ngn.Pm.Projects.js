@@ -1,3 +1,5 @@
+// @requiresBefore Ngn.Frm.FieldSet
+
 Ngn.Pm.ProjectDialog = new Class({
   Extends: Ngn.Dialog.RequestForm,
   options: {
@@ -8,12 +10,12 @@ Ngn.Pm.ProjectDialog = new Class({
 });
 
 var defaultDialogOpts = {
-  width: 250
+  width: 260//
 };
 
 Ngn.Pm.Projects = new Class({
 
-  initialize: function () {
+  initialize: function() {
     new Ngn.Grid({
       basePath: Ngn.serverConfig.url(),
       restBasePath: '',
@@ -25,14 +27,14 @@ Ngn.Pm.Projects = new Class({
       menu: [Ngn.Grid.menu['new']],
       formatters: {
         domain: function(domain) {
-          return '<a href="http://'+domain+'" target="_blank">'+domain+'</a>';
+          return '<a href="http://' + domain + '" target="_blank">' + domain + '</a>';
         }
       },
       toolActions: {
-        edit: function (row, opt) {
+        edit: function(row, opt) {
           new Ngn.Pm.ProjectDialog(Object.merge({
             url: Ngn.serverConfig.url() + '/json_edit/' + row.id,
-            onOkClose: function () {
+            onOkClose: function() {
               this.reload(row.id);
             }.bind(this)
           }, defaultDialogOpts));
